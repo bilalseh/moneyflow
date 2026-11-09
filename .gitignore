@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+.pnpm-store/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# builds
+dist/
+build/
+coverage/
+web/playwright-report/
+web/test-results/
+
+# env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*service-account*.json
+
+# firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebaserc.local
+
+# editors and os
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
