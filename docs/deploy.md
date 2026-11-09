@@ -15,10 +15,26 @@ One-time setup (project owner, with `gcloud`, `gh` and `firebase` logged in):
 bash scripts/setup-deployer.sh
 ```
 
-The script creates the `github-deployer` service account, grants it Firebase
-Hosting Admin, Firebase Rules Admin, API Keys Viewer and Cloud Run Viewer,
-stores its key as the `FIREBASE_SERVICE_ACCOUNT` secret, and stores the
-`VITE_FIREBASE_*` repository variables.
+The script is safe to re-run. It creates the `github-deployer` service
+account and grants it only what the two deploy workflows need:
+
+| Role                     | Scope                        | Why                                       |
+| ------------------------ | ---------------------------- | ----------------------------------------- |
+| Firebase Hosting Admin   | project                      | Release Hosting versions                  |
+| Firebase Rules Admin     | project                      | Release Firestore rules                   |
+| API Keys Viewer          | project                      | Firebase CLI reads the web API key        |
+| Service Usage Consumer   | project                      | Firebase CLI checks which APIs are on     |
+| Cloud Run Viewer         | project                      | Hosting validates the `/api/**` rewrite   |
+| Cloud Run Developer      | project                      | Deploy new API revisions                  |
+| Artifact Registry Writer | `moneyflow` repository only  | Push API images                           |
+| Service Account User     | `moneyflow-api-runtime` only | Run revisions as the API runtime identity |
+
+It also makes the `moneyflow-api` service publicly invokable, which Hosting
+rewrites require. The rule for the API is that every route except
+`/api/health` verifies a Firebase ID token itself. Finally it stores the deployer key as the
+`FIREBASE_SERVICE_ACCOUNT` secret (only when missing, `FORCE_KEY=1` rotates
+it), stores the `VITE_FIREBASE_*` repository variables, and re-runs both
+deploy workflows.
 
 Manual deploy from a laptop:
 
@@ -30,28 +46,31 @@ firebase deploy --only hosting,firestore:rules
 ## API (Cloud Run)
 
 Automatic on pushes to `main` that touch `api/`, via
-`.github/workflows/deploy-api.yml`. Prerequisites, done once the project is on
-the Blaze plan:
+`.github/workflows/deploy-api.yml`. The workflow builds the image on the
+runner, pushes it to Artifact Registry, deploys a new revision and curls
+`/api/health`.
 
-1. Enable APIs: `gcloud services enable run.googleapis.com artifactregistry.googleapis.com secretmanager.googleapis.com`
-2. Create the image repository: `gcloud artifacts repositories create moneyflow --repository-format=docker --location=us-central1`
-3. Store the Gemini key: `echo -n "$KEY" | gcloud secrets create GEMINI_API_KEY --data-file=-`
-4. Grant the `github-deployer` service account Cloud Run Admin, Artifact
-   Registry Writer and Service Account User, and store its key as the
-   `GCP_SERVICE_ACCOUNT` secret.
-5. Add the Hosting rewrite to `firebase.json` so `/api/**` reaches the service
-   (Hosting refuses the rewrite while the Cloud Run API is disabled, which is
-   why it is not there yet):
+| Resource         | Value                                                               |
+| ---------------- | ------------------------------------------------------------------- |
+| Service          | `moneyflow-api`, region `us-central1`                               |
+| Runtime identity | `moneyflow-api-runtime` (no roles yet; Firestore access in phase 6) |
+| Image repository | `us-central1-docker.pkg.dev/moneyflow-coach/moneyflow`              |
+| Image retention  | Cleanup policy keeps the 5 most recent images                       |
+| Scaling          | 0 to 2 instances, concurrency 40, 512 MiB                           |
 
-   ```json
-   { "source": "/api/**", "run": { "serviceId": "moneyflow-api", "region": "us-central1" } }
-   ```
+Firebase Hosting rewrites `/api/**` to the service, so the web app reaches it
+same-origin. The direct `run.app` URL also works.
 
-   Place it before the catch-all `**` rewrite. The web app then reaches the API
-   same-origin without any frontend change.
+Phase 6 adds the Gemini key: store it in Secret Manager as `GEMINI_API_KEY`,
+grant the runtime identity Secret Manager Secret Accessor on that secret, and
+add `--set-secrets "MONEYFLOW_GEMINI_API_KEY=GEMINI_API_KEY:latest"` to the
+deploy step.
 
-## Budget
+## Cost guardrails
 
-Set a budget alert on the billing account before enabling Blaze. Cloud Run
-with `--min-instances 0` and `--max-instances 2` plus the Firestore and
-Hosting free tiers keeps a portfolio app at zero cost under normal traffic.
+A Google Cloud budget sends alerts; it does not stop spending. The real caps
+are in the configuration:
+
+- Cloud Run scales to zero and never runs more than 2 instances.
+- The image cleanup policy keeps Artifact Registry inside its free storage.
+- Hosting, Firestore and Auth stay on their free quotas at portfolio traffic.
