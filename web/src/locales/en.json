@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Moneyflow",
+    "tagline": "A personal money coach",
+    "disclaimer": "Educational tool, not financial advice."
+  },
+  "landing": {
+    "headline": "Understand your money. Plan your goals. Build better habits.",
+    "subhead": "Moneyflow keeps your numbers, tracks real spending against your plan, simulates what-if scenarios with real math, and checks in with you every month.",
+    "signIn": "Sign in with Google",
+    "tryDemo": "Try the demo",
+    "comingSoon": "Coming soon",
+    "features": {
+      "health": {
+        "title": "Financial health score",
+        "body": "A transparent score out of 100 from savings rate, emergency fund, debt load and fixed costs."
+      },
+      "plan": {
+        "title": "A plan that adapts",
+        "body": "Budgets, goal timelines and debt payoff, with a what-if simulator that updates instantly."
+      },
+      "coach": {
+        "title": "An AI coach that explains",
+        "body": "The AI never does the math. It explains results the code computed, and checks in monthly."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist.",
+    "home": "Back to home"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "ar": "العربية"
+  }
+}
