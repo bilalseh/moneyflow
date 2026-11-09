@@ -6,12 +6,12 @@ name: Deploy API
 # GCP_SERVICE_ACCOUNT secret to hold a JSON key with Cloud Run Admin,
 # Artifact Registry Writer and Service Account User roles.
 
+# Manual trigger only until the project is on Blaze and the secret exists
+# (phase 6). Then add back:
+#   push:
+#     branches: [main]
+#     paths: ['api/**', '.github/workflows/deploy-api.yml']
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'api/**'
-      - '.github/workflows/deploy-api.yml'
   workflow_dispatch:
 
 concurrency:
