@@ -26,6 +26,9 @@ const PATHS = {
     'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z',
   trash: 'M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3',
   edit: 'M4 20h4L19 9l-4-4L4 16zM14 6l4 4',
+  chevronStart: 'M15 18l-6-6 6-6',
+  chevronEnd: 'M9 18l6-6-6-6',
+  file: 'M14 3H6v18h12V7zM14 3v4h4',
 } as const;
 
 export type IconName = keyof typeof PATHS;

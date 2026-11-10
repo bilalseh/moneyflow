@@ -1,5 +1,5 @@
 import { EXPENSE_CATEGORY_IDS, todayIso, type CategoryId } from '@moneyflow/shared';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/Button';
@@ -48,6 +48,11 @@ export function QuickAddForm({ onDone }: { onDone: () => void }) {
 
   const [type, setType] = useState<'expense' | 'income'>(initialType);
   const [amount, setAmount] = useState<number | null>(null);
+  const amountRef = useRef<HTMLInputElement>(null);
+  // The dialog exists to type an amount fast, so the amount field gets focus on open.
+  useEffect(() => {
+    amountRef.current?.focus();
+  }, []);
   const [categoryId, setCategoryId] = useState<CategoryId>(
     initialType === 'income' ? 'income' : (chips[0] ?? 'other'),
   );
@@ -107,10 +112,9 @@ export function QuickAddForm({ onDone }: { onDone: () => void }) {
       />
       <Field label={t('quickAdd.amount')} error={error ?? undefined}>
         {({ id, describedBy, invalid }) => (
-          // eslint-disable-next-line jsx-a11y/no-autofocus -- the dialog exists to type an amount fast
           <MoneyInput
             id={id}
-            autoFocus
+            ref={amountRef}
             aria-describedby={describedBy}
             aria-invalid={invalid}
             className="h-14 text-2xl font-semibold"

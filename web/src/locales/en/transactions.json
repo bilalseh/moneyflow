@@ -14,5 +14,139 @@
     "date": "Date",
     "save": "Save",
     "saved": "Saved"
+  },
+  "transactions": {
+    "title": "Activity",
+    "description": "Everything you spent and earned, month by month.",
+    "recurring": "Recurring",
+    "import": "Import CSV",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "typeFilter": "Show",
+    "all": "All",
+    "allCategories": "All categories",
+    "search": "Search notes",
+    "empty": "Nothing here",
+    "emptyBody": "No transactions match this month and filter.",
+    "edit": "Edit transaction",
+    "confirmDelete": "Delete this transaction?",
+    "source": {
+      "csv": "Imported",
+      "recurring": "Recurring",
+      "manual": "Manual",
+      "demo": "Demo"
+    }
+  },
+  "recurring": {
+    "title": "Recurring",
+    "description": "Income and costs that repeat. They are added automatically when they come due.",
+    "add": "Add recurring",
+    "editTitle": "Recurring item",
+    "empty": "No recurring items",
+    "emptyBody": "Add rent, salary or subscriptions so they are recorded for you.",
+    "cadence": "Repeats",
+    "cadences": {
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "nextDate": "Next date",
+    "nextDateHint": "The first time it will be added.",
+    "next": "next on {{date}}",
+    "paused": "Paused",
+    "pause": "Pause",
+    "resume": "Resume",
+    "delete": "Delete {{name}}",
+    "confirmDelete": "Delete this recurring item? Past transactions stay."
+  },
+  "import": {
+    "title": "Import a CSV",
+    "description": "Bring in transactions from your bank's export. Nothing is uploaded until you confirm.",
+    "stepsLabel": "Import steps",
+    "steps": {
+      "upload": "Choose file",
+      "map": "Match columns",
+      "review": "Review"
+    },
+    "uploadTitle": "Choose a CSV file",
+    "uploadHint": "Most banks offer a CSV export. Up to 5,000 rows.",
+    "choose": "Click to choose a file",
+    "privacy": "The file is read in your browser.",
+    "sample": "Download a sample CSV",
+    "tooLarge": "That file is larger than 2 MB.",
+    "parseError": "Could not read the file: {{reason}}",
+    "readError": "Could not read the file.",
+    "noRows": "No rows could be read with these settings. Check the columns and formats.",
+    "skippedRows_one": "{{count}} row could not be read and was skipped.",
+    "skippedRows_other": "{{count}} rows could not be read and were skipped.",
+    "mapTitle": "Match the columns",
+    "mapHint": "We guessed from the headers. {{count}} rows found.",
+    "columns": {
+      "date": "Date",
+      "description": "Description",
+      "amount": "Amount",
+      "debit": "Money out",
+      "credit": "Money in"
+    },
+    "amountLayout": "Amounts are in",
+    "layouts": {
+      "single": "One column",
+      "split": "Two columns (in and out)"
+    },
+    "sign": "Expenses are",
+    "signs": {
+      "negativeIsExpense": "Negative numbers",
+      "positiveIsExpense": "Positive numbers"
+    },
+    "dateFormat": "Date format",
+    "dateFormats": {
+      "YMD": "Year-month-day (2026-10-31)",
+      "DMY": "Day/month/year (31/10/2026)",
+      "MDY": "Month/day/year (10/31/2026)"
+    },
+    "decimal": "Number format",
+    "currency": "Currency",
+    "preview": "Preview",
+    "previewEmpty": "The first rows cannot be read with these settings.",
+    "toReview": "Review transactions",
+    "reviewTitle": "Review {{count}} transactions",
+    "reviewCaption": "Transactions to import, with duplicate flags and categories",
+    "duplicatesFound_one": "{{count}} possible duplicate was unticked.",
+    "duplicatesFound_other": "{{count}} possible duplicates were unticked.",
+    "noDuplicates": "No duplicates found.",
+    "include": "Import",
+    "includeRow": "Import {{description}}",
+    "categoryFor": "Category for {{description}}",
+    "duplicate": {
+      "existing": "Already recorded",
+      "file": "Repeated in file"
+    },
+    "suggest": "Suggest categories with AI",
+    "aiBadge": "AI {{percent}}",
+    "aiDone": "Suggestions added. Change any you disagree with.",
+    "aiQuota": "You have used today's AI requests. Keyword categories are kept.",
+    "aiUnavailable": "AI suggestions are not available right now. Keyword categories are kept.",
+    "backToMapping": "Back to columns",
+    "importCount_one": "Import {{count}} transaction",
+    "importCount_other": "Import {{count}} transactions",
+    "done_one": "Imported {{count}} transaction",
+    "done_other": "Imported {{count}} transactions"
+  },
+  "subscriptions": {
+    "title": "Subscriptions",
+    "description": "Recurring charges found in your activity. Mark the ones you actually use.",
+    "count": "Subscriptions found",
+    "yearly": "Cost per year",
+    "flaggedYearly": "Not marked as used",
+    "flaggedDetail_one": "{{count}} subscription to review",
+    "flaggedDetail_other": "{{count}} subscriptions to review",
+    "listTitle": "Subscriptions",
+    "billsTitle": "Other recurring bills",
+    "notMarked": "Review",
+    "iUseThis": "I use this",
+    "nextExpected": "next around {{date}}",
+    "empty": "No subscriptions found yet",
+    "emptyBody": "Charges that repeat at a steady amount show up here after two months.",
+    "howDetected": "A charge counts as recurring when the same merchant charges a similar amount (within 15%) every week, month or year."
   }
 }
