@@ -35,3 +35,6 @@ ui-debug.log
 .idea/
 .DS_Store
 Thumbs.db
+
+# shell crash dumps
+*.stackdump
