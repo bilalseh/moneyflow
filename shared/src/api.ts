@@ -81,14 +81,15 @@ export interface CheckinRequest {
   month: string;
   income: number;
   spending: number;
-  savingsRate: number | null;
+  /** 0 when there is no income. */
+  savingsRate: number;
   categories: { categoryId: CategoryId; planned: number; actual: number }[];
   goals: {
     id: string;
     name: string;
     target: number;
     saved: number;
-    onTrack: boolean | null;
+    onTrack: boolean;
     projectedMonth: string | null;
   }[];
   scoreChange: number | null;
@@ -161,11 +162,11 @@ export interface CoachContext {
   month: string;
   monthlyIncome: number;
   monthlySpending: number;
-  savingsRate: number | null;
+  savingsRate: number;
   savingsBalance: number;
   emergencyFund: number;
-  emergencyMonths: number | null;
-  healthScore: number;
+  emergencyMonths: number;
+  healthScore: number | null;
   categories: { categoryId: CategoryId; planned: number; actual: number }[];
   goals: {
     id: string;

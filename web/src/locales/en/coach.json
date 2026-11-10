@@ -1,0 +1,79 @@
+{
+  "coach": {
+    "title": "Coach",
+    "description": "Ask about your money. The coach runs the numbers with the simulator, then explains them.",
+    "usage": "{{used}} of {{limit}} AI requests today",
+    "newChat": "New chat",
+    "aiOff": "The AI is not configured on this server right now, so the coach can only give short standard answers. The simulator still works.",
+    "logLabel": "Conversation with the coach",
+    "emptyTitle": "What would you like to know?",
+    "emptyBody": "Try a question about a purchase, a goal or your debts. The coach knows your numbers but never invents them.",
+    "suggestions": {
+      "afford": "Can I afford a 900 phone in March?",
+      "faster": "How can I reach my top goal faster?",
+      "debts": "Which debt should I pay off first?",
+      "cut": "What if I cut dining out by 30%?"
+    },
+    "thinking": "Working it out…",
+    "inputLabel": "Your question",
+    "placeholder": "Ask anything about your budget, goals or debts",
+    "send": "Send",
+    "outOfScope": "Outside what I can help with",
+    "toolFailed": "A calculation could not be run.",
+    "upgrade": "See plans",
+    "errors": {
+      "quota": "You have used today's AI requests.",
+      "failed": "The coach could not answer right now. Please try again.",
+      "steps": "That needed more steps than allowed. Try a simpler question."
+    },
+    "disclaimer": "Educational tool, not financial advice. The coach does not give investment, tax, legal or credit advice and never recommends specific products.",
+    "tools": {
+      "affordability": "Buying {{amount}} in {{month}}",
+      "affordable": "Fits your plan",
+      "notYet": "Not yet",
+      "projected": "Savings by then",
+      "after": "After buying",
+      "buffer": "Cushion kept",
+      "earliest": "Earliest month it fits",
+      "scenario": "What-if result",
+      "debts": "Payoff comparison",
+      "computed": "Computed by the finance module, not by the AI."
+    }
+  },
+  "checkin": {
+    "title": "Monthly check-in",
+    "description": "A short review of the month: where money went, how it compared with the plan, and what to adjust.",
+    "month": "Month",
+    "done": "done",
+    "redo": "Run again",
+    "startTitle": "Check in on {{month}}",
+    "startBody": "We summarize the month from your numbers and suggest a few adjustments you can accept.",
+    "start": "Start check-in",
+    "whatHappens": "What happens",
+    "step1": "The app computes totals, plan vs actual and goal progress.",
+    "step2": "The AI writes a short summary and asks two or three questions.",
+    "step3": "It proposes budget changes. Nothing changes until you accept one.",
+    "quota": "You have used today's AI requests. Try again tomorrow.",
+    "failed": "The check-in could not be created. Please try again.",
+    "summaryTitle": "{{month}} in short",
+    "byAi": "Written by AI",
+    "byRules": "Standard summary",
+    "questionsTitle": "A few questions",
+    "questionsHint": "Your answers are saved with this check-in, just for you.",
+    "saveAnswers": "Save answers",
+    "adjustmentsTitle": "Suggested adjustments",
+    "adjustmentsHint": "Accepting one updates your budget for {{month}}.",
+    "noAdjustments": "No changes suggested. The plan fits.",
+    "lower": "Lower {{category}} by {{percent}}",
+    "raise": "Raise {{category}} by {{percent}}",
+    "accept": "Accept",
+    "dismiss": "Dismiss",
+    "applied": "{{category}} for {{month}} is now {{amount}}.",
+    "noBudget": "There is no budget to adjust yet.",
+    "status": {
+      "accepted": "Accepted",
+      "dismissed": "Dismissed",
+      "pending": "Pending"
+    }
+  }
+}
