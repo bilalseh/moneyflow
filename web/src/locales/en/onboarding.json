@@ -1,0 +1,99 @@
+{
+  "onboarding": {
+    "pageTitle": "Set up",
+    "progress": "Step {{current}} of {{total}}",
+    "progressLabel": "Setup progress",
+    "back": "Back",
+    "skip": "Skip, I'll add this later",
+    "next": "Next",
+    "optional": "Optional",
+    "errors": {
+      "tooLong": "Keep it under 60 characters.",
+      "amountRequired": "Enter an amount greater than zero.",
+      "atLeastOne": "Add at least one source of income.",
+      "nameRequired": "Give it a name.",
+      "rateInvalid": "Enter a yearly rate between 0 and 100, like 19.99.",
+      "dateFuture": "Pick a date in the future.",
+      "savedTooHigh": "Already saved can't be more than the target."
+    },
+    "currency": {
+      "title": "What's your main currency?",
+      "hint": "We show totals in this currency. You can still record amounts in others and set an exchange rate.",
+      "required": "Choose a currency to continue."
+    },
+    "income": {
+      "title": "What money comes in each month?",
+      "hint": "Add each source. For income that changes, use a typical month.",
+      "row": "Income {{n}}",
+      "name": "Name",
+      "namePlaceholder": "Salary",
+      "amount": "Monthly amount",
+      "kind": "Type",
+      "kindHint": "Fixed income repeats automatically each month.",
+      "fixed": "Fixed",
+      "variable": "Varies",
+      "add": "Add another source",
+      "defaultName": "Income"
+    },
+    "fixedCosts": {
+      "title": "What do you pay every month no matter what?",
+      "hint": "Rent, utilities, transport, subscriptions. Leave a row empty to ignore it.",
+      "category": "Category",
+      "amount": "Monthly amount",
+      "amountHint": "Leave empty if it does not apply.",
+      "name": "Label",
+      "add": "Add a fixed cost"
+    },
+    "debts": {
+      "title": "Do you have any debts?",
+      "hint": "Cards, loans, anything with a balance. We use these to compare payoff plans.",
+      "none": "No debts added. That's great, or add them below.",
+      "row": "Debt {{n}}",
+      "name": "Name",
+      "namePlaceholder": "Credit card",
+      "balance": "Balance owed",
+      "apr": "Interest rate (% per year)",
+      "aprHint": "Look for APR on your statement.",
+      "minPayment": "Minimum monthly payment",
+      "tooLow": "This payment does not cover the monthly interest of about {{interest}}, so the balance would keep growing.",
+      "add": "Add a debt"
+    },
+    "savings": {
+      "title": "How much have you saved so far?",
+      "hint": "Rough numbers are fine. You can update them anytime.",
+      "savingsBalance": "Savings and cash",
+      "savingsHint": "Money you could use for goals or a big purchase.",
+      "emergencyFund": "Emergency fund",
+      "emergencyHint": "Money set aside only for emergencies."
+    },
+    "goals": {
+      "title": "What are you saving for?",
+      "hint": "A trip, a laptop, a deposit. We will show when you can reach each one.",
+      "none": "No goals yet. Add one to see a timeline.",
+      "row": "Goal {{n}}",
+      "name": "Goal",
+      "namePlaceholder": "Trip to Japan",
+      "target": "Target amount",
+      "saved": "Already saved",
+      "date": "Target date",
+      "priority": "Priority",
+      "add": "Add a goal"
+    },
+    "review": {
+      "title": "Does this look right?",
+      "hint": "You can edit any of this later.",
+      "finish": "See my health score",
+      "skipped": "Skipped",
+      "nothing": "Nothing added.",
+      "currency": "Main currency",
+      "income": "Income",
+      "fixedCosts": "Fixed costs",
+      "debts": "Debts",
+      "savings": "Savings",
+      "goals": "Goals",
+      "minPayment": "minimum {{amount}}",
+      "recurringNote": "Fixed income and fixed costs will be added automatically each month, starting next month. You can change that under Activity, Recurring.",
+      "saveFailed": "Could not save your setup. Please try again."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "quickAdd": {
+    "open": "إضافة",
+    "title": "إدخال سريع",
+    "type": "النوع",
+    "expense": "مصروف",
+    "income": "دخل",
+    "amount": "المبلغ",
+    "amountRequired": "أدخل مبلغاً.",
+    "category": "الفئة",
+    "moreCategories": "المزيد…",
+    "note": "ملاحظة",
+    "notePlaceholder": "اختياري",
+    "date": "التاريخ",
+    "save": "حفظ",
+    "saved": "تم الحفظ"
+  }
+}

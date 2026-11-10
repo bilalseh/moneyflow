@@ -1,0 +1,72 @@
+{
+  "charts": {
+    "legend": "Legend"
+  },
+  "dashboard": {
+    "greeting": "Welcome back",
+    "greetingName": "Welcome back, {{name}}",
+    "subtitle": "Here is where {{month}} stands.",
+    "import": "Import CSV",
+    "addExpense": "Add expense",
+    "otherCategories": "Everything else",
+    "missingRates": "Some amounts are in {{currencies}} and have no exchange rate yet, so totals leave them out.",
+    "missingRatesLink": "Add a rate",
+    "kpi": {
+      "spent": "Spent this month",
+      "ofPlan": "{{percent}} of plan",
+      "income": "Income",
+      "thisMonth": "This month so far",
+      "savingsRate": "Savings rate",
+      "basis": "Average of recent months",
+      "health": "Health score",
+      "healthLink": "See what drives it",
+      "netWorth": "Net worth",
+      "netWorthDetail": "Savings minus debts"
+    },
+    "byCategory": {
+      "title": "Spending by category",
+      "description": "This month: {{total}}",
+      "share": "Share",
+      "empty": "No spending yet this month",
+      "emptyBody": "Add an expense or import a CSV to see where money goes."
+    },
+    "budget": {
+      "title": "Budget vs actual",
+      "description": "This month, per category",
+      "edit": "Edit plan",
+      "planned": "Planned",
+      "actual": "Actual",
+      "over": "Over budget",
+      "progress": "{{category}} spending against plan",
+      "empty": "No budget for this month yet."
+    },
+    "trend": {
+      "title": "Monthly trend",
+      "description": "Income and spending over the last six months",
+      "income": "Income",
+      "spending": "Spending"
+    },
+    "savingsRate": {
+      "title": "Savings rate",
+      "description": "Share of income not spent, by month",
+      "series": "Savings rate",
+      "target": "20% healthy"
+    },
+    "netWorth": {
+      "title": "Net worth over time",
+      "description": "Savings and cash minus debts",
+      "series": "Net worth"
+    },
+    "recent": {
+      "title": "Recent activity",
+      "empty": "Nothing recorded yet",
+      "emptyBody": "Use the + button to add your first expense."
+    },
+    "coach": {
+      "title": "Ask your coach",
+      "body": "Ask things like \"Can I afford a 900 phone in March?\". The coach runs the numbers with the simulator and explains the result.",
+      "ask": "Open coach",
+      "checkin": "Monthly check-in"
+    }
+  }
+}

@@ -8,17 +8,29 @@
   --color-brand: #0f766e;
   --color-brand-strong: #115e59;
   --color-brand-soft: #ccfbf1;
-  --color-accent: #f59e0b;
+  --color-on-brand: #ffffff;
 
   --color-surface: #f8fafc;
   --color-surface-raised: #ffffff;
+  --color-surface-sunken: #eef2f6;
   --color-ink: #0f172a;
   --color-ink-muted: #475569;
+  --color-ink-subtle: #64748b;
   --color-line: #e2e8f0;
 
   --color-positive: #15803d;
+  --color-positive-soft: #dcfce7;
+  --color-warning: #a16207;
+  --color-warning-soft: #fef3c7;
   --color-negative: #b91c1c;
-  --color-warning: #b45309;
+  --color-negative-soft: #fee2e2;
+
+  /* Chart roles (dataviz reference palette, validated per mode). */
+  --color-chart-1: #2a78d6;
+  --color-chart-2: #eb6834;
+  --color-chart-3: #1baf7a;
+  --color-chart-grid: #e7e5e0;
+  --color-chart-axis: #52514e;
 
   --radius-card: 1rem;
 }
@@ -29,19 +41,30 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme='light']) {
       color-scheme: dark;
       --color-brand: #2dd4bf;
       --color-brand-strong: #5eead4;
       --color-brand-soft: #134e4a;
+      --color-on-brand: #042f2e;
       --color-surface: #0b1120;
       --color-surface-raised: #111a2e;
+      --color-surface-sunken: #1a2540;
       --color-ink: #e2e8f0;
-      --color-ink-muted: #94a3b8;
-      --color-line: #1e293b;
+      --color-ink-muted: #a3b1c6;
+      --color-ink-subtle: #8494ab;
+      --color-line: #22304a;
       --color-positive: #4ade80;
-      --color-negative: #f87171;
+      --color-positive-soft: #0f2e1d;
       --color-warning: #fbbf24;
+      --color-warning-soft: #33270b;
+      --color-negative: #f87171;
+      --color-negative-soft: #3a1414;
+      --color-chart-1: #3987e5;
+      --color-chart-2: #d95926;
+      --color-chart-3: #199e70;
+      --color-chart-grid: #2a3550;
+      --color-chart-axis: #c3c2b7;
     }
   }
 
@@ -61,12 +84,30 @@
     outline-offset: 2px;
   }
 
+  /* Numbers line up in tables and stat tiles. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  dialog::backdrop {
+    background: rgb(15 23 42 / 0.5);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
       transition-duration: 0.01ms !important;
+    }
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    body {
+      background: #ffffff;
     }
   }
 }

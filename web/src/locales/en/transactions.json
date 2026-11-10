@@ -1,0 +1,18 @@
+{
+  "quickAdd": {
+    "open": "Add",
+    "title": "Quick entry",
+    "type": "Type",
+    "expense": "Expense",
+    "income": "Income",
+    "amount": "Amount",
+    "amountRequired": "Enter an amount.",
+    "category": "Category",
+    "moreCategories": "More…",
+    "note": "Note",
+    "notePlaceholder": "Optional",
+    "date": "Date",
+    "save": "Save",
+    "saved": "Saved"
+  }
+}

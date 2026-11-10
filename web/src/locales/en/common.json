@@ -1,0 +1,128 @@
+{
+  "app": {
+    "name": "Moneyflow",
+    "tagline": "A personal money coach",
+    "disclaimer": "Educational tool, not financial advice."
+  },
+  "common": {
+    "loading": "Loading…",
+    "errorTitle": "Something went wrong",
+    "errorBody": "We could not load this. Check your connection and try again.",
+    "retry": "Try again",
+    "close": "Close",
+    "remove": "Remove",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "add": "Add",
+    "saveFailed": "Could not save. Please try again.",
+    "saved": "Saved",
+    "skipToContent": "Skip to content",
+    "perMonth": "{{amount}} / month",
+    "perYear": "{{amount}} / year",
+    "months_one": "{{count}} month",
+    "months_other": "{{count}} months",
+    "never": "Not at this pace",
+    "seeAll": "See all",
+    "showTable": "Show as table",
+    "hideTable": "Hide table",
+    "month": "Month",
+    "amount": "Amount",
+    "category": "Category"
+  },
+  "nav": {
+    "label": "Main",
+    "dashboard": "Home",
+    "transactions": "Activity",
+    "plan": "Plan",
+    "health": "Health",
+    "coach": "Coach",
+    "checkin": "Check-in",
+    "subscriptions": "Subscriptions",
+    "settings": "Settings",
+    "more": "More",
+    "menu": "Open menu"
+  },
+  "user": {
+    "guest": "Guest",
+    "demoBadge": "Demo",
+    "signOut": "Sign out"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist.",
+    "home": "Back to home"
+  },
+  "priority": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "categories": {
+    "housing": "Housing",
+    "utilities": "Utilities",
+    "groceries": "Groceries",
+    "transport": "Transport",
+    "health": "Health",
+    "insurance": "Insurance",
+    "education": "Education",
+    "debt": "Debt payments",
+    "dining": "Dining out",
+    "shopping": "Shopping",
+    "entertainment": "Entertainment",
+    "travel": "Travel",
+    "subscriptions": "Subscriptions",
+    "personal": "Personal care",
+    "gifts": "Gifts and giving",
+    "savings": "Savings",
+    "income": "Income",
+    "other": "Other"
+  },
+  "landing": {
+    "navLabel": "Site",
+    "pricing": "Pricing",
+    "privacy": "Privacy",
+    "source": "Source code",
+    "headline": "Understand your money. Plan your goals. Build better habits.",
+    "subhead": "Moneyflow keeps your numbers, tracks real spending against your plan, simulates what-if scenarios with real math, and checks in with you every month.",
+    "openApp": "Open your dashboard",
+    "tryDemo": "Try the demo",
+    "signIn": "Sign in with Google",
+    "startGuest": "Start from scratch as a guest",
+    "demoNote": "The demo opens a private sample account with four months of realistic data. No sign-up needed.",
+    "signInFailed": "Could not sign you in. Please try again.",
+    "featuresTitle": "What you get",
+    "features": {
+      "health": {
+        "title": "A health score you can read",
+        "body": "A score out of 100 from four transparent rules: savings rate, emergency fund, debt load and fixed costs."
+      },
+      "plan": {
+        "title": "A plan that adapts",
+        "body": "50/30/20, zero-based or custom budgets, goal timelines, and avalanche vs snowball debt plans."
+      },
+      "simulator": {
+        "title": "What-if, with real math",
+        "body": "Save more, cut a category, change income: charts update instantly from tested code."
+      },
+      "daily": {
+        "title": "Five-second entry",
+        "body": "Quick entry, recurring items, CSV import with duplicate detection, and a subscription tracker."
+      },
+      "coach": {
+        "title": "An AI coach that explains",
+        "body": "The AI never does the math. It explains the numbers the code computed and checks in monthly."
+      },
+      "private": {
+        "title": "Your data, your control",
+        "body": "No bank connections. Export everything as CSV, or delete your account and all data in one click."
+      }
+    }
+  }
+}
