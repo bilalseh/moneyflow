@@ -35,7 +35,7 @@ export interface HealthTipsRequest {
   score: number;
   factors: {
     id: (typeof HEALTH_FACTOR_IDS)[number];
-    value: number;
+    value: number | null;
     points: number;
     maxPoints: number;
     status: 'good' | 'fair' | 'poor' | 'unknown';

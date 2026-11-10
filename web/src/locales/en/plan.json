@@ -1,0 +1,127 @@
+{
+  "plan": {
+    "title": "Your plan",
+    "description": "Budget, goals, debts and a what-if simulator, all from your own numbers.",
+    "tabsLabel": "Plan sections",
+    "tabs": {
+      "budget": "Budget",
+      "goals": "Goals",
+      "debts": "Debts",
+      "simulator": "What-if"
+    },
+    "groups": {
+      "needs": "Needs",
+      "wants": "Wants",
+      "savings": "Savings",
+      "income": "Income"
+    },
+    "methods": {
+      "fiftyThirtyTwenty": {
+        "name": "50/30/20",
+        "description": "Half for needs, 30% for wants, 20% for savings. Fixed costs and minimum debt payments come out of needs first."
+      },
+      "zeroBased": {
+        "name": "Zero-based",
+        "description": "Every unit of income gets a job. Categories are funded up to their recent average and the rest goes to savings."
+      },
+      "custom": {
+        "name": "Custom",
+        "description": "Start from your recent spending and set each category yourself."
+      }
+    },
+    "budget": {
+      "title": "Budget for {{month}}",
+      "income": "Planned income: {{amount}}",
+      "method": "Budget method",
+      "confirmRegenerate": "Switching method rebuilds the plan and replaces your unsaved edits. Continue?",
+      "tableCaption": "Budget lines with this month's actual spending",
+      "actualCol": "Spent so far",
+      "plannedCol": "Planned",
+      "plannedFor": "Planned amount for {{category}}",
+      "removeLine": "Remove {{category}}",
+      "addLine": "Add a category…",
+      "save": "Save budget",
+      "saved": "Budget saved",
+      "summary": "Summary",
+      "leftToAssign": "Left to assign",
+      "overPlanned": "Over-planned by",
+      "balanced": "Every unit of income has a job."
+    },
+    "goals": {
+      "contribution": "Monthly savings for goals: {{amount}}, from the Savings line of your budget.",
+      "changeContribution": "Change it",
+      "add": "Add goal",
+      "edit": "Edit goal",
+      "empty": "No goals yet",
+      "emptyBody": "Add something you are saving for and see when you can reach it.",
+      "chartTitle": "Goal timelines",
+      "chartDescription": "Projected savings for each goal at your current pace",
+      "goal": "Goal",
+      "projected": "Reached",
+      "required": "Needed per month",
+      "target": "Target date",
+      "noDate": "No deadline",
+      "monthly": "Gets per month",
+      "done": "Reached",
+      "onTrack": "On track",
+      "behind": "Behind",
+      "priorityLabel": "{{priority}} priority",
+      "progress": "Progress towards {{name}}",
+      "confirmDelete": "Delete the goal \"{{name}}\"?"
+    },
+    "debts": {
+      "add": "Add debt",
+      "edit": "Edit debt",
+      "empty": "No debts",
+      "emptyBody": "If you have cards or loans, add them to compare payoff plans.",
+      "extra": "Extra payment per month",
+      "extraHint": "On top of your minimum payments of {{amount}}.",
+      "saving": "Paying in avalanche order saves {{amount}} in interest compared with snowball.",
+      "cheapest": "Least interest",
+      "totalInterest": "Total interest",
+      "debtFree": "Debt-free",
+      "duration": "Takes",
+      "infeasible": "These payments never clear the balance. Increase the extra payment.",
+      "confirmDelete": "Delete the debt \"{{name}}\"?",
+      "chartTitle": "Remaining balance",
+      "chartDescription": "Total owed month by month for each strategy",
+      "avalanche": {
+        "name": "Avalanche",
+        "description": "Highest interest rate first. Costs the least."
+      },
+      "snowball": {
+        "name": "Snowball",
+        "description": "Smallest balance first. Quick wins keep you going."
+      }
+    },
+    "simulator": {
+      "controls": "Try a change",
+      "controlsHint": "Nothing here is saved. It shows what would happen.",
+      "saveMore": "Save more per month",
+      "saveMoreHint": "Taken from your flexible spending and sent to your goals.",
+      "cutCategory": "Cut a category",
+      "cutBy": "Cut by",
+      "incomeChange": "Income changes by",
+      "reset": "Reset",
+      "surplus": "Left each month",
+      "score": "Health score",
+      "savingsAt": "Savings in 2 years",
+      "noChange": "No change",
+      "from": "from {{before}}",
+      "arrow": "→",
+      "shortfall": "Your flexible spending cannot cover {{amount}} of that. Only the rest is moved to goals.",
+      "drawdown": "In this scenario you spend {{amount}} more than you earn each month, so savings shrink.",
+      "goalsTitle": "Goal dates",
+      "goalsDescription": "With {{amount}} a month going to goals",
+      "earlier_one": "{{count}} month earlier",
+      "earlier_other": "{{count}} months earlier",
+      "later_one": "{{count}} month later",
+      "later_other": "{{count}} months later",
+      "current": "Current plan",
+      "scenario": "With your changes",
+      "chartTitle": "Savings over {{months}} months",
+      "chartDescription": "Cash and savings, not counting the emergency fund",
+      "note": "All numbers come from the tested finance module. The model is described in docs/finance-rules.md."
+    }
+  }
+}

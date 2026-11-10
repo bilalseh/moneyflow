@@ -1,0 +1,82 @@
+{
+  "health": {
+    "title": "Financial health",
+    "description": "A score out of 100 from four simple, documented rules. Each factor is worth 25 points.",
+    "welcomeTitle": "Your plan is ready",
+    "welcomeBody": "Here is your starting health score. Try the what-if simulator to see how small changes move it.",
+    "scoreLabel": "Health score",
+    "basisHistory_one": "Based on your last complete month.",
+    "basisHistory_other": "Based on your last {{count}} complete months.",
+    "basisPlan": "Based on your plan, until you have a full month of activity.",
+    "overall": {
+      "good": "Healthy. Keep it going.",
+      "fair": "On the way. A couple of factors need attention.",
+      "poor": "Needs attention. Start with the lowest factor."
+    },
+    "trySimulator": "Try the simulator",
+    "askCoach": "Ask the coach",
+    "factorsTitle": "What makes up your score",
+    "points": "{{points}} of {{max}} points",
+    "pointsLabel": "{{factor}} points",
+    "healthy": "Healthy:",
+    "atLeast": "{{value}} or more",
+    "atMost": "{{value}} or less",
+    "monthsValue": "{{value}} months",
+    "unknownValue": "Not enough data",
+    "tipAi": "Suggestion written by AI from your numbers",
+    "tipRules": "Suggestion",
+    "status": {
+      "good": "Good",
+      "fair": "Fair",
+      "poor": "Needs work",
+      "unknown": "Unknown"
+    },
+    "factors": {
+      "savingsRate": {
+        "title": "Savings rate",
+        "definition": "Income left after spending, as a share of income"
+      },
+      "emergencyFund": {
+        "title": "Emergency fund",
+        "definition": "Months of essential spending your emergency fund covers"
+      },
+      "debtToIncome": {
+        "title": "Debt to income",
+        "definition": "Minimum debt payments as a share of income"
+      },
+      "fixedCosts": {
+        "title": "Fixed costs",
+        "definition": "Bills you pay no matter what, as a share of income"
+      }
+    },
+    "offlineTips": {
+      "savingsRate": {
+        "good": "You keep a healthy share of your income. Point it at your top goal so it has a job.",
+        "fair": "You are saving something. Try moving one small, regular expense into savings each month.",
+        "poor": "Spending is close to or above income. Look at your two biggest flexible categories first.",
+        "unknown": "Add your income to see your savings rate."
+      },
+      "emergencyFund": {
+        "good": "Your cushion covers six months or more. New savings can go to goals.",
+        "fair": "You have a start. Building towards three, then six months, makes surprises much less stressful.",
+        "poor": "A small emergency fund first, even one month of essentials, protects every other plan.",
+        "unknown": "Add your essential costs or an emergency fund to see this."
+      },
+      "debtToIncome": {
+        "good": "Your debt payments are a small part of income. Keep paying more than the minimum when you can.",
+        "fair": "Debt payments take a noticeable share. Compare avalanche and snowball to clear them faster.",
+        "poor": "Debt payments take a large share of income. Focus extra money on one debt at a time.",
+        "unknown": "Add your income to see this."
+      },
+      "fixedCosts": {
+        "good": "Your fixed costs leave plenty of room each month.",
+        "fair": "Fixed costs take a big share. Review subscriptions and bills for anything you no longer use.",
+        "poor": "Fixed costs leave little room. Even one renegotiated bill makes a lasting difference.",
+        "unknown": "Add your income to see this."
+      }
+    },
+    "historyTitle": "Score history",
+    "historyDescription": "Your score month by month",
+    "rulesNote": "How each factor is calculated is documented in the project's finance rules. The AI only writes suggestions; it never computes the score."
+  }
+}
