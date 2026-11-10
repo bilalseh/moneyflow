@@ -10,6 +10,7 @@ __pycache__/
 
 # builds
 dist/
+dist-e2e/
 build/
 coverage/
 web/playwright-report/
@@ -19,6 +20,8 @@ web/test-results/
 .env
 .env.*
 !.env.example
+# emulator-only, non-secret values used by the e2e build
+!web/.env.e2e
 *.pem
 *service-account*.json
 

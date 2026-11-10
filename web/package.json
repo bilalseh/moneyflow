@@ -13,7 +13,9 @@
     "test:watch": "vitest",
     "test:rules": "vitest run --config vitest.rules.config.ts",
     "e2e": "playwright test",
-    "e2e:install": "playwright install --with-deps chromium"
+    "e2e:install": "playwright install --with-deps chromium",
+    "build:e2e": "vite build --mode e2e --outDir dist-e2e",
+    "e2e:emulated": "firebase emulators:exec --only auth,firestore --project demo-moneyflow \"playwright test\""
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",

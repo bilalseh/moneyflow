@@ -30,6 +30,7 @@ export function OnboardingPage() {
   const { t } = useTranslation();
   const profile = useProfile();
   const step = useWizard((s) => s.step);
+  const finishing = useWizard((s) => s.finishing);
 
   useEffect(() => {
     document.title = `${t('onboarding.pageTitle')} · ${t('app.name')}`;
@@ -40,7 +41,8 @@ export function OnboardingPage() {
     return (
       <ErrorState error={profile.error} onRetry={() => void profile.refetch()} className="m-6" />
     );
-  if (profile.data?.onboardingCompleted === true) return <Navigate to="/app" replace />;
+  if (profile.data?.onboardingCompleted === true && !finishing)
+    return <Navigate to="/app" replace />;
 
   const Step = STEP_COMPONENTS[step];
   return (

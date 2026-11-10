@@ -53,7 +53,8 @@ jobs:
           docker push "$IMAGE"
           echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
 
-      # The Gemini key is added with --set-secrets in phase 6.
+      # Secrets (Gemini, Stripe test key) are bound once by scripts/setup-runtime.sh.
+      # --update-env-vars keeps those bindings; --set-env-vars would drop them.
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy "$SERVICE" \
@@ -67,7 +68,7 @@ jobs:
             --min-instances 0 \
             --max-instances 2 \
             --concurrency 40 \
-            --set-env-vars "MONEYFLOW_ENV=production,MONEYFLOW_FIREBASE_PROJECT_ID=${PROJECT_ID}"
+            --update-env-vars "MONEYFLOW_ENV=production,MONEYFLOW_FIREBASE_PROJECT_ID=${PROJECT_ID},MONEYFLOW_APP_URL=https://${PROJECT_ID}.web.app"
 
       - name: Smoke test
         run: |

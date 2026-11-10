@@ -17,7 +17,7 @@ jobs:
   web:
     name: Web (lint, typecheck, test, build, e2e)
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -38,11 +38,19 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Build for the emulators
+        run: pnpm --filter @moneyflow/web build:e2e
+
       - name: Install Playwright browser
         run: pnpm --filter @moneyflow/web exec playwright install --with-deps chromium
 
-      - name: E2E smoke
-        run: pnpm --filter @moneyflow/web e2e
+      - name: E2E against Firebase emulators
+        run: npx --yes firebase-tools@15 emulators:exec --only auth,firestore --project demo-moneyflow "pnpm --filter @moneyflow/web e2e"
 
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -74,7 +82,7 @@ jobs:
 
       - name: Run rules tests against the emulator
         run: |
-          npx firebase-tools@latest emulators:exec --only firestore --project moneyflow-rules-test \
+          npx --yes firebase-tools@15 emulators:exec --only firestore --project moneyflow-rules-test \
             "pnpm --filter @moneyflow/web test:rules"
 
   api:

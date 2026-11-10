@@ -1,14 +1,13 @@
 import { lazy, Suspense, type ReactNode } from 'react';
 import { createBrowserRouter, Navigate, Outlet } from 'react-router';
 
-import { AppLayout } from '@/app/AppLayout';
 import { RootLayout } from '@/app/RootLayout';
 import { PageLoader } from '@/components/ui/PageLoader';
 import { RequireAuth } from '@/features/auth/RequireAuth';
-import { RequireOnboarded } from '@/features/auth/RequireOnboarded';
 import { LandingPage } from '@/pages/LandingPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
+const AppShell = lazy(() => import('@/app/AppShell').then((m) => ({ default: m.AppShell })));
 const OnboardingPage = lazy(() =>
   import('@/features/onboarding/OnboardingPage').then((m) => ({ default: m.OnboardingPage })),
 );
@@ -92,11 +91,7 @@ export const router = createBrowserRouter([
         children: [
           { path: 'onboarding', element: page(<OnboardingPage />) },
           {
-            element: (
-              <RequireOnboarded>
-                <AppLayout />
-              </RequireOnboarded>
-            ),
+            element: page(<AppShell />),
             children: [
               { index: true, element: page(<DashboardPage />) },
               { path: 'health', element: page(<HealthPage />) },

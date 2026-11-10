@@ -38,6 +38,8 @@ export function Dialog({
     if (open && !dialog.open) {
       opener.current = document.activeElement;
       dialog.showModal();
+      // showModal focuses the first focusable element; honour an explicit request instead.
+      dialog.querySelector<HTMLElement>('[data-autofocus]')?.focus();
     } else if (!open && dialog.open) {
       dialog.close();
       if (opener.current instanceof HTMLElement) opener.current.focus();

@@ -5,7 +5,10 @@ const isCi = Boolean(process.env.CI);
 
 export default defineConfig({
   testDir: './e2e',
-  fullyParallel: true,
+  // One worker: every test shares a single local Firebase emulator.
+  fullyParallel: false,
+  workers: 1,
+  timeout: 90_000,
   forbidOnly: isCi,
   retries: isCi ? 2 : 0,
   reporter: isCi ? 'github' : 'list',
@@ -18,7 +21,7 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: `pnpm preview --port ${String(port)} --strictPort`,
+    command: `pnpm exec vite preview --outDir dist-e2e --port ${String(port)} --strictPort`,
     port,
     reuseExistingServer: !isCi,
   },

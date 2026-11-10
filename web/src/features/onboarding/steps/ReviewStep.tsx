@@ -57,7 +57,7 @@ export function ReviewStep() {
   const user = useSessionUser();
   const client = useQueryClient();
   const navigate = useNavigate();
-  const { data, reset } = useWizard();
+  const { data, complete, setFinishing } = useWizard();
   const [saving, setSaving] = useState(false);
   const currency = data.currency ?? 'USD';
   const d = effectiveData(data);
@@ -85,11 +85,13 @@ export function ReviewStep() {
         labelFor: (id: CategoryId) => t(`categories.${id}`),
         defaultIncomeName: t('onboarding.income.defaultName'),
       });
+      setFinishing(true);
       await commitWrites(user.uid, ops);
       await client.invalidateQueries({ queryKey: queryKeys.user(user.uid) });
-      reset();
+      complete();
       void navigate('/app/health', { replace: true, state: { welcome: true } });
     } catch (error) {
+      setFinishing(false);
       toast.error(t('onboarding.review.saveFailed'));
       console.error(error);
       setSaving(false);

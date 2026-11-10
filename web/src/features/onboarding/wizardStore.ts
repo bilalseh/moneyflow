@@ -95,12 +95,17 @@ export function effectiveData(data: WizardData): WizardData {
 
 interface WizardState {
   step: WizardStep;
+  /** True while the final save runs, so the page does not treat the new profile as an earlier visit. */
+  finishing: boolean;
+  setFinishing: (value: boolean) => void;
   data: WizardData;
   goTo: (step: WizardStep) => void;
   update: <K extends keyof WizardData>(key: K, value: WizardData[K]) => void;
   skip: (step: WizardStep) => void;
   unskip: (step: WizardStep) => void;
   reset: () => void;
+  /** Clear the answers after a successful save, keeping `finishing` on until the next reset. */
+  complete: () => void;
 }
 
 /**
@@ -112,6 +117,10 @@ export const useWizard = create<WizardState>()(
     (set, get) => ({
       step: 'currency',
       data: EMPTY_WIZARD,
+      finishing: false,
+      setFinishing: (finishing) => {
+        set({ finishing });
+      },
       goTo: (step) => {
         set({ step });
       },
@@ -129,10 +138,18 @@ export const useWizard = create<WizardState>()(
         set({ data: { ...get().data, skipped: get().data.skipped.filter((s) => s !== step) } });
       },
       reset: () => {
-        set({ step: 'currency', data: EMPTY_WIZARD });
+        set({ step: 'currency', data: EMPTY_WIZARD, finishing: false });
+      },
+      complete: () => {
+        set({ step: 'currency', data: EMPTY_WIZARD, finishing: true });
       },
     }),
-    { name: 'moneyflow.wizard', storage: createJSONStorage(() => sessionStorage), version: 1 },
+    {
+      name: 'moneyflow.wizard',
+      storage: createJSONStorage(() => sessionStorage),
+      version: 1,
+      partialize: (s) => ({ step: s.step, data: s.data }),
+    },
   ),
 );
 

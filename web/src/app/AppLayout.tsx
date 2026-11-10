@@ -1,34 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink, Outlet } from 'react-router';
 
-import { Icon, type IconName } from '@/components/Icon';
+import { MobileMenu } from '@/app/MobileMenu';
+import { MOBILE_KEYS, NAV_ITEMS, type NavItem } from '@/app/navItems';
+import { Icon } from '@/components/Icon';
 import { LanguageSwitch } from '@/components/LanguageSwitch';
 import { Logo } from '@/components/Logo';
 import { cn } from '@/components/ui/cn';
 import { QuickAddButton, QuickAddHost } from '@/features/transactions/QuickAdd';
 import { useRecurringSync } from '@/features/transactions/useRecurringSync';
 import { UserMenu } from '@/app/UserMenu';
-
-interface NavItem {
-  to: string;
-  key: string;
-  icon: IconName;
-  end?: boolean;
-}
-
-export const NAV_ITEMS: NavItem[] = [
-  { to: '/app', key: 'dashboard', icon: 'home', end: true },
-  { to: '/app/transactions', key: 'transactions', icon: 'list' },
-  { to: '/app/plan', key: 'plan', icon: 'target' },
-  { to: '/app/health', key: 'health', icon: 'heart' },
-  { to: '/app/coach', key: 'coach', icon: 'sparkles' },
-  { to: '/app/checkin', key: 'checkin', icon: 'calendar' },
-  { to: '/app/subscriptions', key: 'subscriptions', icon: 'repeat' },
-  { to: '/app/settings', key: 'settings', icon: 'settings' },
-];
-
-/** Items in the phone's bottom bar; the rest live in the "More" page. */
-const MOBILE_KEYS = ['dashboard', 'transactions', 'plan', 'coach'];
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -63,7 +44,10 @@ export function AppLayout() {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="border-line bg-surface-raised/90 no-print sticky top-0 z-20 flex items-center justify-between gap-3 border-b px-4 py-2 backdrop-blur lg:justify-end">
-          <Logo className="lg:hidden" />
+          <div className="flex items-center gap-1 lg:hidden">
+            <MobileMenu />
+            <Logo />
+          </div>
           <UserMenu />
         </header>
         <div className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-10">

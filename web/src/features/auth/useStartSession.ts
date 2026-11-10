@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 
 import { toast } from '@/components/ui/toast';
 import { isUserCancelled, signInAsGuest, signInWithGoogle } from '@/features/auth/authActions';
-import { seedDemo } from '@/features/demo/seedDemo';
 import { useWizard } from '@/features/onboarding/wizardStore';
 
 type Mode = 'google' | 'demo' | 'guest';
@@ -24,6 +23,7 @@ export function useStartSession() {
         void navigate('/app');
       } else if (mode === 'demo') {
         const uid = await signInAsGuest();
+        const { seedDemo } = await import('@/features/demo/seedDemo');
         await seedDemo(uid, i18n.language.startsWith('ar') ? 'ar' : 'en');
         void navigate('/app');
       } else {
