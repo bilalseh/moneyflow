@@ -1,0 +1,15 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          { "text": "The user wants a short answer.", "thought": true },
+          { "text": "You can afford it " },
+          { "text": "based on the simulator result." }
+        ]
+      },
+      "finishReason": "STOP"
+    }
+  ]
+}

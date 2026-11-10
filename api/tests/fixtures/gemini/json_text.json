@@ -1,0 +1,15 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [{ "text": "{\"tips\": [{\"factorId\": \"savingsRate\", \"text\": \"Keep going.\"}]}" }]
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": { "promptTokenCount": 412, "candidatesTokenCount": 21, "totalTokenCount": 433 },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "abc123"
+}

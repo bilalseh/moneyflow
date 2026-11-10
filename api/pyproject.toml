@@ -12,6 +12,7 @@ dependencies = [
     "pydantic-settings>=2.11.0",
     "firebase-admin>=7.1.0",
     "httpx>=0.28.1",
+    "stripe>=16.1.0",
 ]
 
 [dependency-groups]
@@ -56,7 +57,11 @@ select = [
 ignore = ["ANN401"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101", "ANN"]
+"tests/**" = ["S101", "S105", "S106", "ANN"]
+# Contract field names are camelCase on purpose (they mirror docs/api-contract.md).
+"src/moneyflow_api/schemas/**" = ["N815"]
+"src/moneyflow_api/ai/tools.py" = ["N815"]
+"src/moneyflow_api/ai/tasks/**" = ["N815"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -77,6 +82,10 @@ testpaths = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 addopts = "-q --strict-markers"
+filterwarnings = [
+    # Emitted by fastapi.testclient itself; nothing in this project uses the old API.
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
 
 [tool.coverage.run]
 source = ["moneyflow_api"]

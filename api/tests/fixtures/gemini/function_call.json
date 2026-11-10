@@ -1,0 +1,22 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "role": "model",
+        "parts": [
+          {
+            "functionCall": {
+              "name": "check_affordability",
+              "args": { "amountMajor": 900, "month": "2027-03", "label": "phone" }
+            },
+            "thoughtSignature": "CsQCAVSoXO4..."
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": { "promptTokenCount": 980, "candidatesTokenCount": 30, "totalTokenCount": 1010 },
+  "modelVersion": "gemini-2.5-flash"
+}
