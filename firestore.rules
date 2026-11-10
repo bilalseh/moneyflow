@@ -1,9 +1,11 @@
 rules_version = '2';
 
 // Moneyflow security rules.
-// Every document lives under users/{uid}. A signed-in user (including anonymous
-// demo users) may read and write only the subtree that matches their own uid.
-// Nothing is world-readable.
+// - users/{uid}/...  : the owner (including anonymous demo users) reads and
+//                      writes their own data, limited to known collections.
+// - billing/{uid}    : plan, written only by the API (Admin SDK bypasses rules).
+// - usage/{uid}      : daily AI usage counter, written only by the API.
+// Everything else is denied. Nothing is world-readable.
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -11,12 +13,43 @@ service cloud.firestore {
       return request.auth != null && request.auth.uid == uid;
     }
 
+    function knownCollection(name) {
+      return name in [
+        'incomes', 'fixedCosts', 'debts', 'accounts', 'goals', 'transactions',
+        'recurring', 'budgets', 'scores', 'checkins', 'subscriptionPrefs'
+      ];
+    }
+
+    // Money is stored as integer minor units; reject floats and negatives.
+    function validTransaction() {
+      let d = request.resource.data;
+      return d.amount is int && d.amount > 0
+        && d.type in ['expense', 'income']
+        && d.date is string && d.date.size() == 10
+        && d.currency is string && d.currency.size() == 3;
+    }
+
     match /users/{uid} {
       allow read, write: if isOwner(uid);
 
-      match /{collection}/{docId=**} {
-        allow read, write: if isOwner(uid);
+      match /transactions/{docId} {
+        allow read, delete: if isOwner(uid);
+        allow create, update: if isOwner(uid) && validTransaction();
       }
+
+      match /{collection}/{docId} {
+        allow read, write: if isOwner(uid) && knownCollection(collection) && collection != 'transactions';
+      }
+    }
+
+    match /billing/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    match /usage/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
     }
 
     match /{document=**} {

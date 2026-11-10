@@ -12,6 +12,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 const PROJECT_ID = 'moneyflow-rules-test';
 const ALICE = 'alice-uid';
 const BOB = 'bob-uid';
+const validTx = { amount: 1250, currency: 'USD', type: 'expense', date: '2026-11-09' };
 
 let env: RulesTestEnvironment;
 
@@ -43,9 +44,8 @@ describe('firestore rules', () => {
 
   it('lets a user write nested collections under their own uid', async () => {
     const db = env.authenticatedContext(ALICE).firestore();
-    await assertSucceeds(
-      setDoc(doc(db, `users/${ALICE}/transactions/t1`), { amount: 1250, currency: 'USD' }),
-    );
+    await assertSucceeds(setDoc(doc(db, `users/${ALICE}/transactions/t1`), validTx));
+    await assertSucceeds(setDoc(doc(db, `users/${ALICE}/goals/g1`), { name: 'Trip' }));
   });
 
   it('blocks reading another user profile', async () => {
@@ -58,7 +58,33 @@ describe('firestore rules', () => {
 
   it('blocks writing into another user subtree', async () => {
     const db = env.authenticatedContext(ALICE).firestore();
-    await assertFails(setDoc(doc(db, `users/${BOB}/transactions/t1`), { amount: 1 }));
+    await assertFails(setDoc(doc(db, `users/${BOB}/transactions/t1`), validTx));
+  });
+
+  it('rejects transactions with float, negative or missing amounts', async () => {
+    const db = env.authenticatedContext(ALICE).firestore();
+    const path = `users/${ALICE}/transactions/t2`;
+    await assertFails(setDoc(doc(db, path), { ...validTx, amount: 12.5 }));
+    await assertFails(setDoc(doc(db, path), { ...validTx, amount: -100 }));
+    await assertFails(setDoc(doc(db, path), { ...validTx, type: 'transfer' }));
+  });
+
+  it('rejects collections outside the known list', async () => {
+    const db = env.authenticatedContext(ALICE).firestore();
+    await assertFails(setDoc(doc(db, `users/${ALICE}/anything/x`), { a: 1 }));
+  });
+
+  it('lets users read but never write their plan and usage', async () => {
+    await env.withSecurityRulesDisabled(async (ctx) => {
+      await setDoc(doc(ctx.firestore(), `billing/${ALICE}`), { plan: 'free' });
+      await setDoc(doc(ctx.firestore(), `usage/${ALICE}`), { day: '2026-11-09', count: 3 });
+    });
+    const db = env.authenticatedContext(ALICE).firestore();
+    await assertSucceeds(getDoc(doc(db, `billing/${ALICE}`)));
+    await assertSucceeds(getDoc(doc(db, `usage/${ALICE}`)));
+    await assertFails(setDoc(doc(db, `billing/${ALICE}`), { plan: 'pro' }));
+    await assertFails(setDoc(doc(db, `usage/${ALICE}`), { day: '2026-11-09', count: 0 }));
+    await assertFails(getDoc(doc(db, `billing/${BOB}`)));
   });
 
   it('blocks unauthenticated access entirely', async () => {
