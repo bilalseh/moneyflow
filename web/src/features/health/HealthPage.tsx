@@ -77,7 +77,7 @@ export function HealthPage() {
             aria-valuenow={score}
             className="relative h-3 rounded-full"
             style={{
-              background: `linear-gradient(to ${towards}, var(--color-negative), var(--color-warning) 50%, var(--color-positive))`,
+              background: `linear-gradient(to ${towards}, var(--color-negative), var(--color-warning-bar) 50%, var(--color-positive))`,
             }}
           >
             <span

@@ -22,6 +22,7 @@
   --color-positive-soft: #dcfce7;
   --color-warning: #92400e;
   --color-warning-soft: #fef3c7;
+  --color-warning-bar: #f59e0b;
   --color-negative: #b91c1c;
   --color-negative-soft: #fee2e2;
 
@@ -58,6 +59,7 @@
       --color-positive-soft: #0f2e1d;
       --color-warning: #fbbf24;
       --color-warning-soft: #33270b;
+      --color-warning-bar: #fbbf24;
       --color-negative: #f87171;
       --color-negative-soft: #3a1414;
       --color-chart-1: #3987e5;

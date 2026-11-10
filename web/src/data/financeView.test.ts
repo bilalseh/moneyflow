@@ -31,7 +31,7 @@ describe('buildFinanceView', () => {
   it('splits accounts into liquid savings and the emergency fund', () => {
     expect(view.emergencyFund).toBe(650000);
     expect(view.liquidSavings).toBe(715000);
-    expect(view.netWorth).toBe(650000 + 715000 - 1170000);
+    expect(view.netWorth).toBe(650000 + 715000 - 1260000);
   });
 
   it('builds a six-month trend ending this month', () => {

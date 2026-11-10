@@ -53,6 +53,6 @@ describe('translations', () => {
 
   it('never uses an em dash', () => {
     const all = JSON.stringify(translations);
-    expect(all.includes('—')).toBe(false);
+    expect(all.includes('\u2014')).toBe(false);
   });
 });

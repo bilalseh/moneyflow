@@ -1,1 +1,1 @@
-{"root":["./vite.config.ts","./vitest.config.ts","./vitest.rules.config.ts","./playwright.config.ts","./e2e/helpers.ts","./e2e/landing.spec.ts","./e2e/main-flow.spec.ts","./rules-tests/firestore.rules.test.ts"],"version":"5.9.3"}
+{"root":["./vite.config.ts","./vitest.config.ts","./vitest.rules.config.ts","./playwright.config.ts","./e2e/capture-mobile.spec.ts","./e2e/capture.spec.ts","./e2e/helpers.ts","./e2e/landing.spec.ts","./e2e/main-flow.spec.ts","./rules-tests/firestore.rules.test.ts"],"version":"5.9.3"}

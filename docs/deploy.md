@@ -61,10 +61,32 @@ runner, pushes it to Artifact Registry, deploys a new revision and curls
 Firebase Hosting rewrites `/api/**` to the service, so the web app reaches it
 same-origin. The direct `run.app` URL also works.
 
-Phase 6 adds the Gemini key: store it in Secret Manager as `GEMINI_API_KEY`,
-grant the runtime identity Secret Manager Secret Accessor on that secret, and
-add `--set-secrets "MONEYFLOW_GEMINI_API_KEY=GEMINI_API_KEY:latest"` to the
-deploy step.
+### Runtime access and secrets (one time)
+
+```bash
+bash scripts/setup-runtime.sh
+```
+
+The script prompts for each value without echoing it (or reads it from the
+environment) and is safe to re-run.
+
+| Grant or secret                        | Why                                                                      |
+| -------------------------------------- | ------------------------------------------------------------------------ |
+| Runtime: Cloud Datastore User          | Daily usage counter, plan record, account deletion                       |
+| Runtime: Firebase Authentication Admin | Delete the sign-in when a user deletes their account                     |
+| Secret `GEMINI_API_KEY`                | Gemini free tier. Create it in AI Studio under a project without billing |
+| Secret `STRIPE_SECRET_KEY`             | Stripe test key; anything not starting with `sk_test_` is refused        |
+| Secret `STRIPE_WEBHOOK_SECRET`         | Optional; checkout is confirmed server-side without it                   |
+
+Each secret is readable only by the runtime identity; the deployer can see it
+exists but not its value. The script binds the secrets to the service, and the
+deploy workflow uses `--update-env-vars`, so later deploys keep the bindings.
+
+Until the runtime roles exist, the API cannot read the quota or plan, so AI
+requests fail; the web app then shows its built-in tips, keeps keyword
+categories, and deletes accounts from the browser. With the roles but no
+Gemini key, the API serves deterministic fallback text. Without a Stripe test
+key, checkout shows "not configured".
 
 ## Cost guardrails
 

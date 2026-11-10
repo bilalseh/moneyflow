@@ -30,6 +30,7 @@ export const DEMO_DEBTS = [
     day: 18,
   },
   { id: 'debt-car', name: 'Car loan', balance: 850000, aprBps: 690, minPayment: 26000, day: 15 },
+  { id: 'debt-store', name: 'Store card', balance: 90000, aprBps: 1290, minPayment: 3500, day: 22 },
 ] as const;
 
 export const DEMO_ACCOUNTS = [

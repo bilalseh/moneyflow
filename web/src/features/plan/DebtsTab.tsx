@@ -78,9 +78,10 @@ export function DebtsTab() {
   const { view } = useOutletContext<PlanContext>();
   const debts = useCollection('debts');
   const remove = useDeleteDoc('debts');
-  const [extra, setExtra] = useState(0);
   const [editing, setEditing] = useState<Debt | 'new' | null>(null);
   const step = 10 ** getCurrency(view.main).minorUnits * (view.main === 'LBP' ? 10000 : 10);
+  // Start with a modest extra payment: with none, both orders usually cost the same.
+  const [extra, setExtra] = useState(step * 10);
   const maxExtra = Math.max(step * 10, Math.round((view.incomeBasis * 0.3) / step) * step);
   const comparison = useMemo(() => compareStrategies(view.debts, extra, view.month), [view, extra]);
   const names = new Map(view.debts.map((d) => [d.id, d.name]));

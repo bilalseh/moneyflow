@@ -111,7 +111,7 @@ export function ProgressBar({
   const fill = {
     brand: 'bg-brand',
     positive: 'bg-positive',
-    warning: 'bg-warning',
+    warning: 'bg-warning-bar',
     negative: 'bg-negative',
   }[tone];
   return (

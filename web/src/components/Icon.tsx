@@ -50,7 +50,12 @@ export function Icon({
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={cn('shrink-0', className ?? 'size-5')}
+      // Default to 20px unless the caller sets a size, so color-only classes never blow the icon up.
+      className={cn(
+        'shrink-0',
+        /(^|\s)size-/.test(className ?? '') ? undefined : 'size-5',
+        className,
+      )}
       role={label === undefined ? undefined : 'img'}
       aria-hidden={label === undefined ? true : undefined}
       aria-label={label}

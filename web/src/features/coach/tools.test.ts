@@ -97,7 +97,7 @@ describe('buildCoachContext', () => {
     const context = buildCoachContext(view);
     expect(context.categories.length).toBeLessThanOrEqual(18);
     expect(context.goals).toHaveLength(3);
-    expect(context.debts).toHaveLength(2);
+    expect(context.debts).toHaveLength(3);
     expect(context.monthlyIncome).toBeGreaterThan(0);
     expect(context.categories.every((c) => c.planned >= 0 && c.actual >= 0)).toBe(true);
   });

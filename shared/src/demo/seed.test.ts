@@ -11,6 +11,7 @@ import {
   subscriptionPrefSchema,
   transactionSchema,
 } from '../domain';
+import { compareStrategies } from '../finance/debts';
 import { detectRecurring } from '../finance/recurring';
 import { buildDemoData } from './seed';
 
@@ -64,5 +65,9 @@ describe('buildDemoData', () => {
 
   it('has a score history for the three complete months', () => {
     expect(data.scores.map((s) => s.month)).toEqual(['2026-08', '2026-09', '2026-10']);
+  });
+
+  it('has debts where avalanche and snowball differ once there is an extra payment', () => {
+    expect(compareStrategies(data.debts, 10000, '2026-11').interestSaved).toBeGreaterThan(0);
   });
 });
