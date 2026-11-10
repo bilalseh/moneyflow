@@ -65,6 +65,10 @@ export async function readProfile(uid: string): Promise<Profile | null> {
   return parsed.success ? parsed.data : null;
 }
 
+export async function deleteProfile(uid: string): Promise<void> {
+  await deleteDoc(doc(getDb(), 'users', uid));
+}
+
 export async function writeProfile(uid: string, profile: Profile): Promise<void> {
   await setDoc(doc(getDb(), 'users', uid), clean(profileSchema.parse(profile)));
 }

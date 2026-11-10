@@ -1,0 +1,155 @@
+{
+  "pricing": {
+    "title": "Simple plans",
+    "subtitle": "Everything works on the free plan. Pro adds more AI and a household budget preview.",
+    "testModeTitle": "Demo checkout, Stripe test mode.",
+    "testModeBody": "No real money moves and no real card is charged. Use the Stripe test card",
+    "notConfigured": "Checkout is not configured on this deployment yet.",
+    "failed": "Could not start checkout. Please try again.",
+    "footnote": "Prices shown for the demo only. Moneyflow is an educational portfolio project, not a financial service.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "tagline": "For one person getting organized.",
+      "current": "Open the app",
+      "cta": "Get started",
+      "features": {
+        "budget": "One budget with 50/30/20, zero-based or custom",
+        "score": "Health score with monthly history",
+        "simulator": "Goals, debt plans and the what-if simulator",
+        "import": "Quick entry, recurring items and CSV import",
+        "ai20": "20 AI requests a day",
+        "export": "CSV export and monthly PDF report"
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Test mode",
+      "price": "$5",
+      "period": "/ month",
+      "tagline": "For people who lean on the coach.",
+      "cta": "Upgrade with test checkout",
+      "signInFirst": "Try the demo first",
+      "features": {
+        "everything": "Everything in Free",
+        "ai200": "200 AI requests a day",
+        "household": "Shared household budget (preview)",
+        "priority": "Early access to new features"
+      }
+    }
+  },
+  "billing": {
+    "invalidSession": "This checkout link is not valid.",
+    "confirming": "Confirming your upgrade…",
+    "welcomeTitle": "You're on Pro",
+    "welcomeBody": "Test payment received. Your AI limit is now 200 requests a day.",
+    "toDashboard": "Go to dashboard"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Profile, currency, language, plan and your data.",
+    "preferences": {
+      "title": "Profile and preferences",
+      "name": "Display name",
+      "languageHint": "Changes the whole app, including right-to-left layout for Arabic.",
+      "notifications": "Reminders",
+      "notify": {
+        "monthlyCheckin": "Remind me to do the monthly check-in",
+        "budgetAlerts": "Show a note when a category goes over budget",
+        "productUpdates": "Tell me about new features"
+      },
+      "notifyNote": "Reminders appear inside the app. This demo never sends email."
+    },
+    "currency": {
+      "title": "Currency",
+      "description": "Totals use your main currency. Set a manual rate for every other currency you use.",
+      "main": "Main currency",
+      "mainHint": "Changing it does not convert stored amounts; rates below are relative to it.",
+      "rateLabel": "1 {{code}} in {{main}}",
+      "needed": "Some amounts use this currency and need a rate.",
+      "addRate": "Add a currency…",
+      "invalidRate": "The rate for {{code}} must be a positive number like 1.08."
+    },
+    "plan": {
+      "title": "Plan and usage",
+      "free": "Free",
+      "usage": "{{used}} of {{limit}} AI requests used today",
+      "usageLabel": "AI requests used today",
+      "resets": "Resets at {{time}}",
+      "unavailable": "Plan details are unavailable right now.",
+      "upgrade": "See plans",
+      "cancel": "Cancel Pro",
+      "confirmCancel": "Cancel the Pro test subscription now?",
+      "cancelled": "Back on the free plan.",
+      "cancelFailed": "Could not cancel. Please try again.",
+      "testNote": "Billing runs in Stripe test mode. No real payments."
+    },
+    "data": {
+      "title": "Your data",
+      "description": "Download everything, or delete it for good.",
+      "export": "Export all data (CSV)",
+      "report": "Monthly report (PDF)",
+      "guestTitle": "You're using a guest account",
+      "guestBody": "Link a Google account to keep your data and sign in from other devices.",
+      "link": "Link Google account",
+      "linked": "Google account linked.",
+      "resetDemo": "Reset demo data",
+      "resetDone": "Demo data reset.",
+      "restart": "Start over with the setup wizard",
+      "confirmRestart": "This deletes all your data and opens the setup wizard. Continue?",
+      "delete": "Delete account",
+      "deleteTitle": "Delete your account?",
+      "deleteBody": "This permanently deletes your account, every transaction, budget, goal, debt and check-in, and cancels any test subscription. It cannot be undone.",
+      "deleteWord": "DELETE",
+      "typeToConfirm": "Type {{word}} to confirm.",
+      "deleteForever": "Delete everything",
+      "deleted": "Your account and data were deleted.",
+      "failed": "That did not work. Please try again."
+    }
+  },
+  "report": {
+    "back": "Back to settings",
+    "download": "Download PDF",
+    "printHint": "In the print dialog, choose \"Save as PDF\".",
+    "title": "Monthly report: {{month}}",
+    "generated": "Generated {{date}}",
+    "income": "Income",
+    "spending": "Spending",
+    "savingsRate": "Savings rate",
+    "byCategory": "Spending by category",
+    "difference": "Left",
+    "goals": "Goals",
+    "debts": "Debts"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "intro": "Moneyflow is an educational portfolio project. This page explains, in plain words, what is stored and how to remove it.",
+    "updated": "Last updated November 2026.",
+    "sections": {
+      "stored": {
+        "title": "What we store",
+        "body": "Your sign-in identity from Firebase Authentication (an anonymous id for guests, or your Google name, email and photo), and the data you enter: profile, incomes, costs, debts, accounts, goals, transactions, budgets, health scores and check-ins. It lives in Google Cloud Firestore under your account id, and security rules let only you read or write it."
+      },
+      "ai": {
+        "title": "What the AI sees",
+        "body": "When you use an AI feature, the server sends Google's Gemini API only what that feature needs: computed totals and categories, goal and debt names, your chat messages, or transaction descriptions you ask to categorize. Moneyflow keeps the resulting text (for example a check-in) in your account, plus a daily request counter. The API key never reaches your browser."
+      },
+      "payments": {
+        "title": "Payments",
+        "body": "Checkout runs on Stripe in test mode. Card details go to Stripe, never to Moneyflow. We store only your plan and Stripe's customer and subscription ids."
+      },
+      "browser": {
+        "title": "In your browser",
+        "body": "We keep your language choice in local storage and unfinished setup answers and the coach conversation in session storage, which clears when you close the tab. There are no advertising or tracking cookies."
+      },
+      "control": {
+        "title": "Export and delete",
+        "body": "In Settings you can export everything as CSV files and delete your account. Deleting removes your data, your plan record and usage counter, cancels any test subscription, and deletes your sign-in."
+      },
+      "notStored": {
+        "title": "What we never do",
+        "body": "No bank connections, no selling or sharing of data, and no investment, tax, legal or credit advice."
+      }
+    }
+  }
+}

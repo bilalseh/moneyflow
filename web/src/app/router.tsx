@@ -50,6 +50,28 @@ const SubscriptionsPage = lazy(() =>
   })),
 );
 
+const CheckinPage = lazy(() =>
+  import('@/features/checkin/CheckinPage').then((m) => ({ default: m.CheckinPage })),
+);
+const CoachPage = lazy(() =>
+  import('@/features/coach/CoachPage').then((m) => ({ default: m.CoachPage })),
+);
+const SettingsPage = lazy(() =>
+  import('@/features/settings/SettingsPage').then((m) => ({ default: m.SettingsPage })),
+);
+const BillingSuccessPage = lazy(() =>
+  import('@/features/billing/BillingSuccessPage').then((m) => ({ default: m.BillingSuccessPage })),
+);
+const ReportPage = lazy(() =>
+  import('@/features/reports/ReportPage').then((m) => ({ default: m.ReportPage })),
+);
+const PricingPage = lazy(() =>
+  import('@/features/billing/PricingPage').then((m) => ({ default: m.PricingPage })),
+);
+const PrivacyPage = lazy(() =>
+  import('@/pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })),
+);
+
 const page = (node: ReactNode) => <Suspense fallback={<PageLoader />}>{node}</Suspense>;
 
 export const router = createBrowserRouter([
@@ -58,6 +80,8 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <LandingPage /> },
+      { path: 'pricing', element: page(<PricingPage />) },
+      { path: 'privacy', element: page(<PrivacyPage />) },
       {
         path: 'app',
         element: (
@@ -80,6 +104,11 @@ export const router = createBrowserRouter([
               { path: 'transactions/import', element: page(<ImportPage />) },
               { path: 'transactions/recurring', element: page(<RecurringPage />) },
               { path: 'subscriptions', element: page(<SubscriptionsPage />) },
+              { path: 'checkin', element: page(<CheckinPage />) },
+              { path: 'coach', element: page(<CoachPage />) },
+              { path: 'settings', element: page(<SettingsPage />) },
+              { path: 'billing/success', element: page(<BillingSuccessPage />) },
+              { path: 'report/:month', element: page(<ReportPage />) },
               {
                 path: 'plan',
                 element: page(<PlanLayout />),
